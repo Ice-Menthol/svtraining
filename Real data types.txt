@@ -1,0 +1,21 @@
+//Real data types
+// real, shortreal
+module real_types_example;
+  real r;
+  shortreal s;
+  initial 
+    begin
+     r=3.14159;
+     s=2.718f;
+      $display("real r=%f, shortreal s=%f",r,s);
+    end
+endmodule
+
+// Code your testbench here
+// or browse Examples
+module tb_real;
+  real_types_example dut();
+endmodule
+
+
+-----
