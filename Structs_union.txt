@@ -1,0 +1,154 @@
+//Dynamic arrays
+module dynamic_array_ex;
+  int dyn_arr[];
+  initial 
+    begin
+      dyn_arr=new[4];
+      foreach(dyn_arr[i])
+        dyn_arr[i]=i*3;
+      foreach(dyn_arr[i])
+        $display("dyn_arr[%0d]=%0d",i,dyn_arr[i]);
+    end
+endmodule
+
+//associative array
+module associative_array;
+  int assoc_arr[string];
+  initial
+    begin
+      assoc_arr["A"]=10;
+      assoc_arr["B"]=30;
+      $display("Associative array : A=%0d, B=%0d", assoc_arr["A"], assoc_arr["B"]);
+    end
+endmodule
+//Queue
+module queue;
+    bit [7:0] my_queue [$];
+  bit [7:0] element;
+    initial begin
+        $display("Queue example");
+
+        // Add elements to the queue
+        my_queue.push_back(8'h10);
+        my_queue.push_back(8'h20);
+        my_queue.push_back(8'h30);
+
+        $display("Queue contents: %p", my_queue);
+
+        // Remove an element from the queue
+      
+        element = my_queue.pop_front();
+        $display("Popped element: %h", element);
+
+        $display("Queue contents after pop: %p", my_queue);
+
+        // Insert an element at a specific position
+        my_queue.insert(1, 8'h40);
+        $display("Queue contents after insert: %p", my_queue);
+
+        // Delete an element at a specific position
+        my_queue.delete(1);
+        $display("Queue contents after delete: %p", my_queue);
+    end
+endmodule
+//Struct
+
+module struct_example;
+  typedef struct packed{
+    logic [7:0] id;
+    logic valid;
+    int data;
+  } my_struct_t;
+  my_struct_t s;
+  initial 
+    begin
+      s.id=8'hAB;
+      s.valid=1;
+      s.data=100;
+      $display("Struct: id=%h, valid=%b, data=%d",s.id,s.valid,s.data);
+    end
+endmodule
+//Unions
+module union_example;
+  typedef union packed{
+    int i;
+    logic [31:0] l;
+  } my_union_t;
+  my_union_t u;
+  initial
+    begin
+      u.i=32'hDEADBEEF;
+      $display("Union as int: %h, as logic : %h",u.i,u.l);
+    end
+endmodule
+//enum
+module enum_example;
+  typedef enum {RED, GREEN=3, BLUE} color_t;
+  color_t c;
+  initial 
+    begin
+      c= GREEN;
+      $display("Enum Value c=%0d",c);
+      c=BLUE;
+      $display("Enum Value c=%0d",c);
+    end
+endmodule
+-------------
+module tb_queue;
+  queue dut();
+endmodule
+module tb_dynamic_array;
+  dynamic_array_ex dur();
+endmodule
+module tb_associative_array_ex;
+  associative_array dut();
+endmodule
+
+module tb_struct;
+  struct_example dut();
+endmodule
+
+module tb_union;
+  union_example dut();
+endmodule
+
+module tb_enum;
+  enum_example dut();
+endmodule
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		      

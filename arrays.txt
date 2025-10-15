@@ -1,0 +1,73 @@
+//string example
+module string_example;
+  string s;
+  initial 
+    begin 
+      s="Hello SystemVerilog!";
+      $display("String value: %s, Length=%d", s,s.len());
+    end
+endmodule
+//packed arrays
+module packed_arrays_example;
+  logic [3:0][7:0] pa;
+  initial 
+    begin
+      pa=32'hCAFEBABE;
+      pa[0]=8'hAA;
+      pa[1]=8'hBB;
+      pa[2]=8'hCC;
+      pa[3]=8'hDD;
+      $display("Packed pa=%h",pa);
+      $display("pa[0]=%h",pa[0]);
+      $display("pa[1]=%h",pa[1]);
+      $display("pa[2]=%h",pa[2]);
+      $display("pa[3]=%h",pa[3]);
+    end
+endmodule
+//unpacked arrays
+module unpacked_array_example;
+   int sum;
+  logic [7:0] ua[3:0];
+  initial 
+    begin
+      ua[0]=8'hA1;
+      ua[1]=8'hA2;
+      ua[2]=8'hA3;
+      ua[3]=8'hA4;
+      
+      $display("ua[0]=%h",ua[0]);
+      $display("ua[1]=%h",ua[1]);
+      $display("ua[2]=%h",ua[2]);
+      $display("ua[3]=%h",ua[3]);
+     
+      sum = ua[0]+ua[1]+ua[2]+ua[3];
+      $display("Sum of all ua: %0h",sum);    
+      
+    end
+endmodule
+
+---
+// Code your testbench here
+// or browse Examples
+module tb_string;
+  string_example dut();
+endmodule
+
+module tb_packed;
+   packed_arrays_example P();
+  initial begin
+    $display("----- Running Packed Array Example -----");
+   
+  end
+endmodule
+module tb_unpacked;
+  unpacked_array_example U();
+  initial begin
+    $display("----- Running Unpacked Array Example -----");
+   
+  end
+endmodule 
+
+
+      
+      
